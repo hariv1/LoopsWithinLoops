@@ -95,7 +95,7 @@ def draw_L(window, circle, r, c):
             new_circle = rg.Circle(rg.Point(x, y), circle.radius)
             new_circle.fill_color = circle.fill_color
             new_circle.attach_to(window)
-            window.render(0.1)
+            window.render()
             x = x + (2*circle.radius)
         y = y + (2*circle.radius)
         x = original_x
@@ -105,7 +105,7 @@ def draw_L(window, circle, r, c):
             new_circle = rg.Circle(rg.Point(x, y), circle.radius)
             new_circle.fill_color = circle.fill_color
             new_circle.attach_to(window)
-            window.render(0.1)
+            window.render()
             x = x + (2 * circle.radius)
         y = y + (2 * circle.radius)
         x = original_x
@@ -117,7 +117,7 @@ def draw_L(window, circle, r, c):
             new_circle = rg.Circle(rg.Point(new_x, y-(2*circle.radius)), circle.radius)
             new_circle.fill_color = circle.fill_color
             new_circle.attach_to(window)
-            window.render(0.1)
+            window.render()
             new_x = new_x + (circle.radius*2)
         new_x = original_x + (circle.radius * 6)
         y = y - (2 *circle.radius)
@@ -166,9 +166,41 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+
+    c1_x = rectangle.corner_1.x
+    c1_y = rectangle.corner_1.y
+
+    c2_x = rectangle.corner_2.x
+    c2_y = rectangle.corner_2.y
+
+    x1 = c1_x
+    y1 = c1_y
+
+    x2 = c2_x
+    y2 = c2_y
+
+    for i in range(n):
+        for _ in range(i+1):
+            new_rectangle = rg.Rectangle(rg.Point(x1,y1), rg.Point(x2,y2))
+            new_rectangle.attach_to(window)
+            window.render()
+            x1 = x1 - rectangle.get_width()
+            x2 = x2 - rectangle.get_width()
+
+
+        y1 = y1 + rectangle.get_height()
+        y2 = y2 + rectangle.get_height()
+        x1 = c1_x
+        x2 = c2_x
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------------------
